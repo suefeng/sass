@@ -1,0 +1,76 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+$main-width: 1200px;
+$center: 0 auto;
+$border: 1px solid #ccc;
+$vert: top;
+$horz: left;
+$radius: 20px;
+
+$text-color: #555;
+$title-color: #78c3b6;
+$heading-color: #67bce5;
+$subheading-color: #7d53a7;
+$link-color: #e00400;
+$link-hover-color: #fff;
+$date-color: #232323;
+
+@mixin rounded-top-left { border-#{$vert}-#{$horz}-radius: $radius; }
+
+/* Main
+---------------------------*/
+html { font-size: 67%; }
+body { font-family: Arial, Helvetica, sans-serif; background: #eee; color: $text-color; }
+header { 
+	background: #ddd; line-height: 5rem; border-top: 5px solid $title-color; position: fixed; width: 100%; z-index: 100; box-shadow: 0 0 1em #aaa; 
+	div { max-width: $main-width; margin: $center; padding: 0 2.0rem; }
+	h1 { display: inline-block; vertical-align: middle; }
+	nav { 
+		display: inline-block; margin-left: 20px;
+		li { display: inline-block; }
+		a { display: inline-block; margin: 0 1.5rem 0 0; padding: 0 10px; border: $border; border-radius: 15px; background: #fff; }
+		a:hover { background: #aaa; }
+	} 
+}
+#wrapper { max-width: $main-width; margin: $center; overflow: hidden; padding: 2.0rem; position: relative; padding-top: 90px; z-index: 0; }
+section { width: 65%; float: left; }
+article { 
+	margin: 0 0 20px; padding: 20px; border: $border; background: #fff; @include rounded-top-left; 
+	time { font-size: 1.6rem; font-weight: bold; margin: 1.2rem 2.0rem; display: block; color: $date-color; }
+	.meta { 
+		text-align: right; border-top: $border; margin: 10px 0 0; padding: 5px 0 0;
+		a { padding: 0 5px; }
+		a:hover { background: #aaa; border-radius: 15px; }
+	}
+}
+aside { 
+	width: 30%; float: right; background: #ddd; border: $border; @include rounded-top-left; margin: 0 0 20px;
+	h2 { margin: 2.0rem; }
+	ul { margin: 2.0rem; }
+	li { width: 100%; overflow: hidden; border-bottom: $border; }
+	em { float: right; }
+	a { display: block; }
+}
+footer { max-width: $main-width; margin: $center; padding: 2.0rem; }
+
+/* Text
+---------------------------*/
+a { color: $link-color; text-decoration: none; font-size: 1.6rem; line-height: 2.5rem; }
+a:hover { color: $link-hover-color; }
+p { font-size: 1.6em; line-height: 2.5rem; }
+h1 { font-size: 4.0rem; color: $title-color; }
+h2 { font-size: 2.5rem; margin: 0 0 2.0rem; color: $heading-color }
+h3 { font-size: 2.0rem; color: $subheading-color; } 
+
+/* Media Queries
+---------------------------*/
+@media (max-width: 550px) {
+	#wrapper { padding-top: 140px; }
+	header nav { margin-left: 0px; }
+	section { float: none; width: 100%; }
+	aside { @extend section; margin: 0; border-radius: 0; }
+}
